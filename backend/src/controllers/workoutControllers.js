@@ -35,15 +35,24 @@ exports.workoutCreate = async (req, res) => {
 };
 exports.workoutUpdateById = async (req, res) => {
   const { id } = req.params;
+  const { title, reps, load } = req.body;
   try {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(404).json({ message: "No Such Workout" });
     }
-    const workout = await Workout.findByIdAndUpdate(
-      { _id: id },
-      { ...req.body }
-    );
-
+    // const workout = await Workout.findByIdAndUpdate(
+    //   { _id: id },
+    //   {
+    //     ...req.body,
+    //     title,
+    //     reps,
+    //     load,
+    //   }
+    // );
+    const workout = await Workout.findByIdAndUpdate({ _id: id });
+    (workout.title = title), (workout.reps = reps), (workout.load = load);
+    workout.save();
+    
     return res.status(200).json({ workout });
   } catch (error) {
     return res.json({ message: error.message });

@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn {
+  @apply px-6 py-2 focus:outline-none outline-none text-white bg-sky-900 hover:bg-sky-700 transition-all duration-300 ease-in-out;
+}
+
+.btn_danger {
+  @apply px-6 py-2 focus:outline-none outline-none text-white bg-rose-900 hover:bg-rose-700 transition-all duration-300 ease-in-out;
+}
+
+.btn_success {
+  @apply px-6 py-2 focus:outline-none outline-none text-white bg-lime-900 hover:bg-lime-700 transition-all duration-300 ease-in-out;
+}
